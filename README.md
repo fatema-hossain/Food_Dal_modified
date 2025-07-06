@@ -26,8 +26,4 @@ This is the Food_Dal_modified project, containing both frontend and backend code
 - Admin dashboard
 - Order management
 
-## Author
-Fatema Hossain
 
-## License
-This project is private.
