@@ -1,6 +1,6 @@
-# Food_DeL---Copy-modified
+# Food_Dal_modified
 
-This is the Food_DeL---Copy-modified project, containing both frontend and backend code for a food delivery application.
+This is the Food_Dal_modified project, containing both frontend and backend code for a food delivery application.
 
 ## Project Structure
 
