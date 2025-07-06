@@ -1,0 +1,131 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 120px;
+  margin-right: 20px;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-menu li {
+  position: relative;
+}
+
+.navbar-menu li a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+/* Underline style */
+.navbar-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: purple;
+  transition: width 0.3s ease;
+}
+
+/* Show underline on hover */
+.navbar-menu li a:hover::after {
+  width: 100%;
+}
+
+/* Show underline on active menu item */
+.navbar-menu li.active a::after {
+  width: 100%;
+}
+
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.navbar button{
+    background: transparent;
+    font-size: #49557e;
+    border: 1px solid purple;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.navbar button:hover{
+    background: purple;
+    color: white;
+}
+.navbar :active{
+  padding-bottom: 2px;
+  border-bottom: 2px solid purple;
+}
+.app{
+    width: 80%;
+    margin: auto;
+}
+
+@media (max-width: 1050px) {
+  .navbar  .navbar-logo{
+    width : 140px;
+  }
+
+  .navbar-menu {
+    font-size: 17px;
+    gap: 20px;
+  }
+
+  .navbar-right {
+    gap : 30px;
+  }
+  .navbar-right img{
+    width : 20px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  
+}
+
+.navbar-menu button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
