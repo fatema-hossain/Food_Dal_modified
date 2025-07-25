@@ -15,13 +15,13 @@
     font-size: 14px;
     padding: 10px 20px;
     color: #454545;
-    border: 1px solid tomato;
+    border: 1px solid purple;
 }
 .my-orders-order img{
     width: 50px;
 }
 .my-orders-order p span{
-    color: tomato;
+    color: purple;
 }
 .my-orders-order p b{
     font-weight: 500;
@@ -35,40 +35,7 @@
     cursor: pointer;
     color: #454545
 }
-/*
 
-:root .my-orders-order button{
-    border: 1px solid tomato;
-    background-color: black;
-    color: white;
-}
-
-.lightcolors .my-orders-order button{
-    border: 1px solid #454545;
-    background-color: #ffe1e1;
-    color: #454545
-}
-
-
-:root .my-orders-order p b,
-:root .my-orders-order{
-    color: white;
-}
-
-.lightcolors .my-orders-order p b,
-.lightcolors .my-orders-order{
-    color: #454545;
-}
-
-
-:root .myordersp {
-    color: white; 
-}
-
-.lightcolors .myordersp {
-    color: black;
-}
-*/
 
 @media (max-width:900px) {
     .my-orders-order{

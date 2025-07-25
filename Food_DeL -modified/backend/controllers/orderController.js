@@ -234,7 +234,7 @@ const placeOrder = async (req, res) => {
       amount: req.body.amount,
       address: req.body.address,
       payment: true,               // mark payment done or false as per your logic
-      status: "Pending",           // optional order status
+      status: "Food Processing",           // optional order status
     });
 
     await newOrder.save();

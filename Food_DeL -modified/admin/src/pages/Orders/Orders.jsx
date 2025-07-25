@@ -1,32 +1,42 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Orders.css";
-import { useState ,useEffect, useContext } from "react";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { assets } from "../../assets/assets";
 
-const Orders = ({url}) => {
+const Orders = ({ url }) => {
   const [orders, setOrders] = useState([]);
 
   const fetchAllOrders = async () => {
-    const response = await axios.get(url+"/api/order/list");
-
-    if (response.data.success) {
-      setOrders(response.data.data);
-      console.log(response.data.data);
-    } else {
-      toast.error("Error");
+    try {
+      const response = await axios.get(url + "/api/order/list");
+      if (response.data.success) {
+        setOrders(response.data.data);
+        console.log(response.data.data);
+      } else {
+        toast.error("Error fetching orders");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Network or server error");
     }
   };
 
   const statusHandler = async (event, orderId) => {
-    const response = await axios.post(url+"/api/order/status", {
-      orderId,
-      status: event.target.value
-    });
-    if (response.data.success) {
-      await fetchAllOrders();
+    try {
+      const response = await axios.post(url + "/api/order/status", {
+        orderId,
+        status: event.target.value,
+      });
+      if (response.data.success) {
+        await fetchAllOrders();
+      } else {
+        toast.error("Failed to update status");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to update status");
     }
   };
 
@@ -34,35 +44,38 @@ const Orders = ({url}) => {
     fetchAllOrders();
   }, []);
 
-
   return (
-    <div className='order add'>
-      <h3> Order Page</h3>
+    <div className="order add">
+      <h3>Order Page</h3>
       <div className="order-list">
-        {orders.map((order,index) => (
-          <div key={index} className='order-item'>
-            <img src={assets.parcel_icon} alt="" />
+        {orders.map((order, index) => (
+          <div key={order._id} className="order-item">
+            <img src={assets.parcel_icon} alt="parcel" />
             <div>
-              <p className='order-item-food'>
-                {order.items.map((item,index)=>{
-                  if(index===order.items.length-1){
-                    return item.name + " x" + item.quantity;
-                  } else {
-                    return item.name + " x" + item.quantity + ", ";
-                  }
-                })}
+              <p className="order-item-food">
+                {order.items
+                  .map((item) => `${item.name} x${item.quantity}`)
+                  .join(", ")}
               </p>
-              <p className="order-item-name">{order.address.firstName + " " + order.address.lastName}</p>
+              <p className="order-item-name">User ID: {order.userId}</p>
               <div className="order-item-address">
-                <p>{order.address.street + ", " }</p>
-                <p>{order.address.city + ", " + order.address.state + ", " + order.address.country + ", " + order.address.zipCode}</p>
+                <p>{order.address}</p>
               </div>
-              <p> Item : {order.items.length}</p>
-              <p>${order.amount}</p>
-              <select onChange={(event) => statusHandler(event, order.id)} value={order.status}>
+              <p>Items: {order.items.length}</p>
+              <p>${parseFloat(order.amount).toFixed(2)}</p>
+
+              <label htmlFor={`status-${order._id}`} className="visually-hidden">
+                Order Status
+              </label>
+              <select
+                id={`status-${order._id}`}
+                name="orderStatus"
+                onChange={(event) => statusHandler(event, order._id)}
+                value={order.status}
+              >
                 <option value="Food Processing">Food Processing</option>
-                <option value=" Delivered">Food Delivered</option>
                 <option value="Out for delivery">Out for delivery</option>
+                <option value="Delivered">Food Delivered</option>
               </select>
             </div>
           </div>
@@ -70,6 +83,6 @@ const Orders = ({url}) => {
       </div>
     </div>
   );
-}
+};
 
 export default Orders;

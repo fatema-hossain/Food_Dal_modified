@@ -9,7 +9,6 @@ import Footer from './components/Footer/Footer';
 import LoginPopup from'./components/LoginPopup/LoginPopup';
 import Verify from './pages/Verify/Verify';
 import MyOrders from './pages/MyOrders/MyOrders'
-
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancel from './pages/PaymentCancel';
 import PaymentFail from './pages/PaymentFail';
