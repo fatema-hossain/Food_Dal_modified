@@ -13,7 +13,7 @@ This is the Food_Dal_modified project, containing both frontend and backend code
 ### Backend
 1. Open a terminal and navigate to the `backend` folder
 2. Run `npm install` to install dependencies
-3. Run `npm start` to start the backend server
+3. Run `npm run server` to start the backend server
 
 ### Frontend
 1. Open a new terminal and navigate to the `frontend` folder
@@ -26,8 +26,4 @@ This is the Food_Dal_modified project, containing both frontend and backend code
 - Admin dashboard
 - Order management
 
-## Author
-Fatema Hossain
 
-## License
-This project is private.
